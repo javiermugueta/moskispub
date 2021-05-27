@@ -1,0 +1,39 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: viewer
+  labels:
+    app: viewer
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: viewer
+  strategy:
+    type: Recreate
+  template:
+    metadata:
+      labels:
+        app: viewer
+    spec:
+      containers:
+      - image: javiermugueta/viewer
+        name: viewer
+        env:
+        - name: endpoint
+          value: "https://<id>-db1.adb.<region1>.oraclecloudapps.com/ords/admin/signals1v/"
+        - name: provider
+          value: "Oracle Cloud"
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: viewer
+spec:
+ type: LoadBalancer
+ selector:
+  app: viewer
+ ports:
+   - name: front
+     protocol: TCP
+     port: 80

@@ -1,0 +1,39 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: osp
+  labels:
+    app: osp
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: osp
+  strategy:
+    type: Recreate
+  template:
+    metadata:
+      labels:
+        app: osp
+    spec:
+      containers:
+      - image: javiermugueta/osp
+        env:
+        - name: stream
+          value: "ocid1.stream.oc1....a5q"
+        - name: tenancy
+          value: "ocid1.tenancy.oc1..a...ga"
+        - name: user
+          value: "ocid1.user.oc1..aaaaa...eha"
+        - name: region
+          value: "<oci region name such as eu-frankfurt-1>"
+        - name: fingerprint
+          value: "85...3:d6"
+        - name: ppkfile
+          valueFrom:
+           configMapKeyRef:
+              name: myppk
+              key: myppk
+        - name: password
+          value: "-" # deprecated
+        name: osp

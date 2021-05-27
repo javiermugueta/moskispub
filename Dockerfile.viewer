@@ -1,0 +1,8 @@
+FROM oraclelinux:7-slim
+RUN curl --silent --location https://rpm.nodesource.com/setup_12.x | bash -
+RUN yum -y install --skip-broken nodejs npm
+RUN npm install express https
+WORKDIR /app
+ADD viewer.js /app
+EXPOSE 80
+CMD ["node","viewer.js"]
