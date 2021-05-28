@@ -1,5 +1,10 @@
 # signals (moskis)
 
+## mqtt producer
+```
+./mqttgen.sh
+```
+
 ## oci streaming microbatch producer
 ```
 docker build -t javiermugueta/osp -f Dockerfile.osp .
@@ -9,12 +14,26 @@ kubectl get configmaps myppk -o yaml
 kubectl apply -f osp.yaml
 ```
 
-## build & deploy reader microservice in oci
+## mqtt to oci streaming microbatch transceiver
+```
+docker build -t javiermugueta/m2os -f Dockerfile.m2os .
+docker push javiermugueta/m2os
+kubectl create configmap myppk --from-file=myppk=./myppk 
+kubectl get configmaps myppk -o yaml
+kubectl apply -f m2os.yaml
+```
+
+## reader microservice in oci
 ```
 docker build  -t javiermugueta/viewer  -f Dockerfile.viewer .
 docker push javiermugueta/viewer 
 kubectl apply -f viewer1.yaml
 ```
+## gke cluster creation
+```
+gcloud beta container --project "<yourproject>" clusters create-auto "autopilot-cluster-1" --region "europe-central2" --release-channel "regular" --network "projects/bigdatasport/global/networks/default" --subnetwork "projects/bigdatasport/regions/europe-central2/subnetworks/default" --cluster-ipv4-cidr "/17" --services-ipv4-cidr "/22"
+```
+
 ## deploy reader microservice in gke
 ```
 kubectl apply -f viewer2.yaml

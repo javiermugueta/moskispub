@@ -1,0 +1,9 @@
+FROM oraclelinux:7-slim
+RUN  curl -o /etc/yum.repos.d/public-yum-ol7.repo https://yum.oracle.com/public-yum-ol7.repo  && yum-config-manager --enable ol7_developer_golang111 && yum -y install deltarpm git golang make vi  && rm -rf /var/cache/yum
+#
+WORKDIR /m2os
+ADD m2os.sh .
+RUN chmod 700 m2os.sh
+ADD m2os.go .
+CMD ["/m2os/m2os.sh"]
+

@@ -1,0 +1,43 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: m2os
+  labels:
+    app: m2os
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: m2os
+  strategy:
+    type: Recreate
+  template:
+    metadata:
+      labels:
+        app: m2os
+    spec:
+      containers:
+      - image: javiermugueta/m2os
+        env:
+        - name: broker
+          value: "mqtt://test.mosquitto.org:1883"
+        - name: mqtttopic
+          value: "jmu-signals"
+        - name: stream
+          value: "ocid1.stream.oc1.eu-frankfurt-1.amaaaaaaxwhvexyaupo3jjqvduhjxzapizrhgp5ulu6rji2erscmoj4x5a5q"
+        - name: tenancy
+          value: "ocid1.tenancy.oc1..aaaaaaaafwn2xifqqy2ces6zkuxa6terq4ftsm5c5hun3p7if3s7t2uj2vga"
+        - name: user
+          value: "ocid1.user.oc1..aaaaaaaaxzdnwy2xc2sk7bkilul6w7gpwryxfjdxre42rzwg3gcpgmhjeeha"
+        - name: region
+          value: "eu-frankfurt-1"
+        - name: fingerprint
+          value: "85:b7:1f:8d:af:13:42:81:0b:ad:ea:7c:18:6d:f3:d6"
+        - name: ppkfile
+          valueFrom:
+           configMapKeyRef:
+              name: myppk
+              key: myppk
+        - name: password
+          value: "-" # deprecated
+        name: m2os
