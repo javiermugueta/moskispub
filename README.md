@@ -1,5 +1,5 @@
 # signals (moskis)
-![Oracle](./img/signals.jpg)
+![Architecture](./img/signals.jpg)
 
 ## 
 
@@ -41,8 +41,10 @@ gcloud beta container --project "<yourproject>" clusters create-auto "autopilot-
 
 ## deploy reader microservice in gke
 ```
+git clone https://github.com/javiermugueta/moskispub.git
 kubectl apply -f viewer2.yaml
 ```
+![ArchitecGoogle cloud shellture](./img/gcloudshell.jpg)
 
 ## external table in db1 and db2
 ```
