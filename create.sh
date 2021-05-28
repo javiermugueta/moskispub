@@ -1,5 +1,7 @@
 #!/bin/sh
-# 
+#
+# jmu, may 2021 
+#
 # create the workshop resources
 #
 # put your own values here
@@ -32,7 +34,6 @@ oci iam region-subscription create --tenancy-id $TENANCY --region-key $REG2KEY
 oci iam dynamic-group create --name $NAME --description $NAME --matching-rule "ALL {resource.type = 'autonomous-databases'}"
 #
 oci iam policy create --compartment-id $TENANCY --name signals --statements '["allow service objectstorage-eu-frankfurt-1 to manage object-family in compartment signals","allow any-user to {STREAM_READ, STREAM_CONSUME} in compartment signals","allow any-user to manage objects in compartment signals","allow dynamic-group signals to manage buckets in tenancy"]' --description signals
-
 #
 # object storage urls 
 #
