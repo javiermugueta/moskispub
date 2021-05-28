@@ -1,5 +1,5 @@
 # signals (moskis)
-![Oracle](./img/moskis-signals.jpg)
+![Oracle](./img/signals.jpg)
 ## mqtt producer
 ```
 ./mqttgen.sh
