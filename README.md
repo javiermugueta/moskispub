@@ -1,5 +1,10 @@
 # signals (moskis)
 ![Oracle](./img/signals.jpg)
+
+## 
+
+[Take a look at this blog](https://javiermugueta.blog/2021/05/27/creating-a-high-available-multi-region-datalake-with-2-oracle-autonomous-databases-and-2-replicated-object-storage-buckets-for-purposes-such-as-reporting-ml-or-ai-part-one/)
+
 ## mqtt producer
 ```
 ./mqttgen.sh
