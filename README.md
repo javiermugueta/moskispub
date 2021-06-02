@@ -36,7 +36,7 @@ kubectl apply -f viewer1.yaml
 ```
 ## gke cluster creation
 ```
-gcloud beta container --project "<yourproject>" clusters create-auto "autopilot-cluster-1" --region "europe-central2" --release-channel "regular" --network "projects/bigdatasport/global/networks/default" --subnetwork "projects/bigdatasport/regions/europe-central2/subnetworks/default" --cluster-ipv4-cidr "/17" --services-ipv4-cidr "/22"
+gcloud beta container --project "<yourproject>" clusters create-auto "autopilot-cluster-1" --region "<region>" --release-channel "regular" --network "projects/<project>/global/networks/default" --subnetwork "projects/<project>/regions/<region>/subnetworks/default" --cluster-ipv4-cidr "/17" --services-ipv4-cidr "/22"
 ```
 
 ## deploy reader microservice in gke
