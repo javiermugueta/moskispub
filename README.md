@@ -3,7 +3,9 @@
 
 ## 
 
-[Take a look at this blog](https://javiermugueta.blog/2021/05/27/creating-a-high-available-multi-region-datalake-with-2-oracle-autonomous-databases-and-2-replicated-object-storage-buckets-for-purposes-such-as-reporting-ml-or-ai-part-one/)
+[Take a look at this blog post](https://javiermugueta.blog/2021/05/27/creating-a-high-available-multi-region-datalake-with-2-oracle-autonomous-databases-and-2-replicated-object-storage-buckets-for-purposes-such-as-reporting-ml-or-ai-part-one/)
+
+[Take a look at this blog post] (https://javiermugueta.blog/2021/06/03/creating-a-high-available-multi-region-datalake-with-2-oracle-databases-and-2-replicated-object-storage-buckets-for-purposes-such-as-reporting-ml-or-ai-part-two-final/)
 
 ## mqtt producer
 ```
@@ -36,6 +38,8 @@ kubectl apply -f viewer1.yaml
 ```
 ## gke cluster creation
 ```
+gcloud beta container --project "bigdatasport" clusters create-auto "autopilot-cluster-1" --region "europe-central2" --release-channel "regular" --network "projects/bigdatasport/global/networks/default" --subnetwork "projects/bigdatasport/regions/europe-central2/subnetworks/default" --cluster-ipv4-cidr "/17" --services-ipv4-cidr "/22"
+
 gcloud beta container --project "<yourproject>" clusters create-auto "autopilot-cluster-1" --region "<region>" --release-channel "regular" --network "projects/<project>/global/networks/default" --subnetwork "projects/<project>/regions/<region>/subnetworks/default" --cluster-ipv4-cidr "/17" --services-ipv4-cidr "/22"
 ```
 
