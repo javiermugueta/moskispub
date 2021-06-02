@@ -5,8 +5,6 @@
 
 [Take a look at this blog post](https://javiermugueta.blog/2021/05/27/creating-a-high-available-multi-region-datalake-with-2-oracle-autonomous-databases-and-2-replicated-object-storage-buckets-for-purposes-such-as-reporting-ml-or-ai-part-one/)
 
-[Take a look at this blog post] (https://javiermugueta.blog/2021/06/03/creating-a-high-available-multi-region-datalake-with-2-oracle-databases-and-2-replicated-object-storage-buckets-for-purposes-such-as-reporting-ml-or-ai-part-two-final/)
-
 ## mqtt producer
 ```
 ./mqttgen.sh
